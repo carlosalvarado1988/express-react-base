@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+
 
 class App extends Component {
   constructor() {
@@ -12,12 +14,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/message')
-      .then(response => response.json())
-      .then(json => this.setState({ message: json }));
-    fetch('/api/patients')
-      .then(response => response.json())
-      .then(patients => this.setState({ patients }));
+    axios.get('/api/message')
+      .then(response => this.setState({ message: response.data }))
+    axios.get('/api/patients')
+      .then(response => this.setState({ patients: response.data }))
   }
 
   render() {

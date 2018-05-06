@@ -2,14 +2,15 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/message', function(req, res, next) {
-  res.json('Cloud Care Project');
+  res.sendJSONSuccess('Cloud Care Project')
 });
 
 router.get('/patients', function(req, res, next) {
-  res.json([
+  const patients = [
     {id:1, name: 'Carlos'},
     {id:2, name: 'Pamela'}
-  ]);
+  ];
+  res.sendJSONSuccess(patients)
 });
 
 module.exports = router;
