@@ -1,5 +1,5 @@
 {
-  "name": "project-server",
+  "name": "cloud-care-server",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
