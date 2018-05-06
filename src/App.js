@@ -5,13 +5,19 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
-    this.state = { message: '' };
+    this.state = {
+      message: '',
+      patients: []
+   };
   }
 
   componentDidMount() {
     fetch('/api/message')
       .then(response => response.json())
       .then(json => this.setState({ message: json }));
+    fetch('/api/patients')
+      .then(response => response.json())
+      .then(patients => this.setState({ patients }));
   }
 
   render() {
@@ -22,8 +28,13 @@ class App extends Component {
           <h2>{this.state.message}</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Welcome, these are your patients:
         </p>
+        <ul>
+          {this.state.patients.map(patient =>
+            <li key={patient.id}>{patient.name}</li>
+          )}
+        </ul>
       </div>
     );
   }
