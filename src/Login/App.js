@@ -32,7 +32,7 @@ class App extends Component {
         </p>
         <ul>
           {this.state.patients.map(patient =>
-            <li key={patient.id}>{patient.name}</li>
+            <li key={patient.patient_id}>{patient.last_name} {patient.first_name}</li>
           )}
         </ul>
       </div>
